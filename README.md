@@ -107,21 +107,24 @@ Eficiência(p) = Speedup(p) / p
 
 # 7. Gráfico de Tempo de Execução
 
-<img width="750" height="446" alt="image" src="https://github.com/user-attachments/assets/ac699d8b-ff14-4781-a534-79abb30fd873" />
+<img width="750" height="446" alt="image" src="https://github.com/user-attachments/assets/4ba9e4aa-f4c3-40fb-b0bd-4bd12333a09b" />
+
 
 
 ---
 
 # 8. Gráfico de Speedup
 
-<img width="750" height="446" alt="image" src="https://github.com/user-attachments/assets/70db1fad-bd38-4cda-8493-a745f6ddde52" />
+<img width="750" height="446" alt="image" src="https://github.com/user-attachments/assets/18ed63c9-f0ba-4218-a14c-6c067e9edc5f" />
+
 
 
 ---
 
 # 9. Gráfico de Eficiência
 
-<img width="750" height="446" alt="image" src="https://github.com/user-attachments/assets/e49a7181-909e-4dd8-87c4-88138d9426a8" />
+<img width="750" height="446" alt="image" src="https://github.com/user-attachments/assets/df7b1a3d-1276-424f-8c53-d7dbd6812e40" />
+
 
 
 ---
