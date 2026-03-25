@@ -130,39 +130,31 @@ Eficiência(p) = Speedup(p) / p
 ---
 
 # 10. Análise dos Resultados
-Observa-se que houve uma redução significativa no tempo de execução com o aumento do número de processos.
+Os resultados mostram uma redução significativa no tempo de execução com o aumento do número de processos, confirmando o ganho proporcionado pela paralelização.
 
-O speedup obtido foi próximo do ideal até 4 processos, indicando boa utilização dos recursos da máquina. Para 2 processos, o speedup foi ligeiramente superior a 2, o que pode ser explicado por efeitos de cache e otimizações do sistema operacional.
+O tempo serial foi de aproximadamente 88,96 segundos. Com 2 processos, o tempo caiu para cerca de 43,79 segundos, resultando em um speedup de aproximadamente 2,03 e eficiência de 1,02 — ligeiramente acima do ideal, possivelmente devido a otimizações internas do sistema.
 
-A partir de 8 processos, o ganho de desempenho começa a diminuir, e a eficiência cai, indicando a presença de overhead de paralelização.
+Com 4 processos, o tempo caiu para 22,47 segundos, o que representa um speedup de 3,96 e uma eficiência próxima a 0,99, demonstrando excelente aproveitamento do paralelismo até esse ponto.
 
-Com 12 processos, o ganho adicional é pequeno em relação a 8 processos, mostrando que o sistema atingiu um ponto de saturação.
+Ao aumentar para 8 processos, o tempo reduziu para 14,08 segundos, porém o speedup (6,32) não cresceu de forma proporcional, e a eficiência caiu para 0,79, indicando início da sobrecarga da paralelização.
 
-Isso ocorre devido a fatores como:
+Com 12 processos, o tempo foi 13,18 segundos, um ganho modesto em relação a 8 processos, com speedup de 6,75 e eficiência caindo para 0,56, evidenciando saturação do sistema.
 
-- Overhead na criação e gerenciamento de processos
-- Comunicação entre processos via filas (Queue)
-- Contenção de CPU
-- Limitações de acesso à memória e disco
+Essa perda de eficiência após 4 processos pode ser atribuída a fatores como overhead na criação e gerenciamento dos processos, comunicação e sincronização entre eles, contenção de recursos da CPU e limitações de I/O.
 
-Provavelmente o número de processos ultrapassou o número de núcleos físicos da máquina, causando competição por recursos.
+Além disso, o número de processos provavelmente ultrapassou a quantidade de núcleos físicos disponíveis, o que gera competição por recursos e troca constante de contexto, reduzindo o ganho potencial.
 
-Portanto, a aplicação apresenta boa escalabilidade até certo ponto, mas com perda de eficiência em níveis mais altos de paralelismo.
+Portanto, o paralelismo é eficiente e escalável até um certo limite, mas apresenta retornos decrescentes conforme o número de processos ultrapassa a capacidade física da máquina.
 
 # 11. Conclusão
-A paralelização trouxe um ganho significativo de desempenho em relação à execução serial.
+A implementação paralela proporcionou um ganho substancial em relação à execução serial, reduzindo significativamente o tempo total de processamento.
 
-O melhor desempenho foi observado entre 4 e 8 processos, onde o speedup foi mais eficiente.
+O desempenho ideal foi observado na faixa entre 4 e 8 processos, onde o speedup foi mais eficiente, alinhado ao número de núcleos físicos da máquina.
 
-A partir de 8 processos, os ganhos diminuem devido ao aumento do overhead e limitação de recursos da máquina.
+Acima desse limite, os ganhos se tornam menos expressivos devido ao overhead inerente à paralelização e à limitação dos recursos computacionais disponíveis.
 
-O programa apresentou boa escalabilidade inicial, mas não linear para todos os níveis de paralelismo.
+Embora o programa apresente boa escalabilidade inicial, o aumento do paralelismo não resulta em melhorias lineares em todas as configurações testadas.
 
-Como melhorias futuras, podem ser consideradas:
+Para aprimorar o desempenho, recomenda-se investigar estratégias como a redução da comunicação entre processos, a utilização de pools de processos para minimizar custos de criação e destruição, ajuste do tamanho do buffer para otimizar o fluxo de dados e implementação de técnicas de balanceamento de carga mais refinadas.
 
-- Redução da comunicação entre processos
-- Uso de pools de processos
-- Ajuste do tamanho do buffer
-- Melhor balanceamento de carga
-
-Conclui-se que o uso de paralelismo é eficiente para este tipo de problema, mas deve ser ajustado conforme a capacidade do hardware.
+Conclui-se que a paralelização é uma solução eficaz para o problema, desde que calibrada conforme a capacidade do hardware utilizado, garantindo assim o melhor aproveitamento dos recursos disponíveis.
